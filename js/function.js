@@ -119,25 +119,26 @@
 /*Hide 1sr Option in Select*/
 
 document.addEventListener("DOMContentLoaded", function () {
-  const select = document.getElementById("know_runo");
-  const defaultOption = select.querySelector("option[disabled]");
+  const selectBoxes = [document.getElementById("agents"), document.getElementById("know_runo")];
 
-  select.addEventListener("mousedown", function () {
-    // Temporarily hide the disabled option
-    defaultOption.hidden = true;
-  });
+  selectBoxes.forEach((select) => {
+    const defaultOption = select.querySelector("option[disabled]");
 
-  select.addEventListener("blur", function () {
-    // Show it again in case user reopens dropdown without selecting
-    defaultOption.hidden = false;
-  });
+    select.addEventListener("mousedown", function () {
+      defaultOption.hidden = true;
+    });
 
-  select.addEventListener("change", function () {
-    // Optional: keep it hidden after user selects a valid value
-    defaultOption.hidden = true;
+    select.addEventListener("blur", function () {
+      if (!select.value) {
+        defaultOption.hidden = false;
+      }
+    });
+
+    select.addEventListener("change", function () {
+      defaultOption.hidden = true;
+    });
   });
 });
-
 /*ends */
 
 /* Send utm to web.runo.in Starts */
