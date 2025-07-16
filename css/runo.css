@@ -2679,6 +2679,10 @@ footer .list-unstyled li a:hover {
   border-radius: 12px !important;
   line-height: 1.7 !important;
 }
+
+.form-select:valid {
+  color: #000 !important;
+}
 input,
 input::placeholder {
   font-size: 14px;
