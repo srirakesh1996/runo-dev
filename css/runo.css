@@ -2,7 +2,7 @@
   background-color: #191919 !important;
 }
 .mb-1 {
-  margin-bottom: 14px !important;
+  margin-bottom: 17px !important;
 }
 
 .freechat-icon {
@@ -2669,14 +2669,15 @@ footer .list-unstyled li a:hover {
 
 .form-control {
   color: #898989;
-  padding: 5px 8px !important;
+  padding: 8px 8px !important;
   border-radius: 12px !important;
   line-height: 1.7 !important;
 }
 .form-select {
   color: #898989;
-  padding: 8px 8px !important;
+  padding: 8spx 8px !important;
   border-radius: 12px !important;
+  line-height: 1.7 !important;
 }
 input,
 input::placeholder {
