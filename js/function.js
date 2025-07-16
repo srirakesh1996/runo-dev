@@ -116,6 +116,30 @@
   }
 })(jQuery);
 
+/*Hide 1sr Option in Select*/
+
+document.addEventListener("DOMContentLoaded", function () {
+  const select = document.getElementById("know_runo");
+  const defaultOption = select.querySelector("option[disabled]");
+
+  select.addEventListener("mousedown", function () {
+    // Temporarily hide the disabled option
+    defaultOption.hidden = true;
+  });
+
+  select.addEventListener("blur", function () {
+    // Show it again in case user reopens dropdown without selecting
+    defaultOption.hidden = false;
+  });
+
+  select.addEventListener("change", function () {
+    // Optional: keep it hidden after user selects a valid value
+    defaultOption.hidden = true;
+  });
+});
+
+/*ends */
+
 /* Send utm to web.runo.in Starts */
 document.addEventListener("DOMContentLoaded", function () {
   const interval = setInterval(() => {
