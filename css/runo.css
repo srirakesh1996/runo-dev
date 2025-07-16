@@ -2679,23 +2679,6 @@ footer .list-unstyled li a:hover {
   border-radius: 12px !important;
   line-height: 1.7 !important;
 }
-
-.form-select {
-  color: #898989; /* Default placeholder color */
-  padding: 8px 8px !important;
-  border-radius: 12px !important;
-  line-height: 1.7 !important;
-}
-
-/* Only change color when a valid option is selected */
-.form-select option {
-  color: #000;
-}
-
-/* Force placeholder to stay gray */
-.form-select option[disabled] {
-  color: #898989;
-}
 input,
 input::placeholder {
   font-size: 14px;
