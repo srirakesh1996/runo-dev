@@ -116,7 +116,7 @@
   }
 })(jQuery);
 
-/*Hide 1sr Option in Select*/
+/*Hide 1st Option in Select*/
 
 document.addEventListener("DOMContentLoaded", function () {
   const selectBoxes = [document.getElementById("agents"), document.getElementById("know_runo")];
