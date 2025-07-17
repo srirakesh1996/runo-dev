@@ -177,13 +177,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 100);
 });
 /* Send utm to web.runo.in ends */
+
 function submitForm(formId, formData, formToken) {
   const $form = $(`#${formId}`);
   const $btn = $form.find("button[type='submit']");
 
   $btn.prop("disabled", true);
 
-  // UTM tracking from localStorage
+  // Retrieve UTM values from localStorage
   const utmSource = localStorage.getItem("utm_source");
   const utmCampaign = localStorage.getItem("utm_campaign");
 
@@ -192,7 +193,9 @@ function submitForm(formId, formData, formToken) {
   if (utmSource) formData["custom_utm source"] = utmSource;
   if (utmCampaign) formData["custom_utm campaign"] = utmCampaign;
 
-  // 1. Send to Runo API
+  // console.log("Submitting form:", formId);
+  //console.log("Form Data Sent to API:", formData);
+
   $.ajax({
     type: "POST",
     url: `https://api-call-crm.runo.in/integration/webhook/wb/5d70a2816082af4daf1e377e/${formToken}`,
@@ -203,40 +206,43 @@ function submitForm(formId, formData, formToken) {
     },
   })
     .done(function (data) {
+      //  console.log("✅ Success:", data);
       $form[0].reset();
       $btn.prop("disabled", false);
 
+      // Check if form is inside a modal and close it if yes
       const $modal = $form.closest(".modal");
-      if ($modal.length) $modal.modal("hide");
+      if ($modal.length) {
+        $modal.modal("hide");
+      }
 
-      // Always show thank you modal
+      // Show thank you modal always
       $("#thankYouModal").modal("show");
-
-      // Prepare Zapier data from formData
-      const zapierData = {
-        name: formData["your_name"] || "",
-        email: formData["your_email"] || "",
-        phone: formData["your_phone"] || "",
-      };
-
-      $.ajax({
-        type: "POST",
-        url: "https://script.google.com/macros/s/AKfycbyATctMrbOAp_WIiW4vIrDh-XS-y-IWghYvBYwSnTOr7OAv1-89--ADP6HBWMne2GmkuQ/exec",
-        data: {
-          name: formData["your_name"] || "",
-          email: formData["your_email"] || "",
-          phone: formData["your_phone"] || "",
-        },
-        success: function () {
-          console.log("✅ Sent to Google Script");
-        },
-        error: function () {
-          console.warn("❌ Google Script failed");
-        },
-      });
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
+      //  console.log("❌ Error:", textStatus, errorThrown);
       $btn.prop("disabled", false);
       alert("Oops! Something went wrong.");
     });
+
+  // 🔹 2. Prepare Zapier Data (field mapping)
+  const zapierData = {
+    name: formData["your_name"] || "",
+    email: formData["your_email"] || "",
+    phone: formData["your_phone"] || "",
+  };
+
+  // 🔹 3. Send to Zapier
+  $.ajax({
+    type: "POST",
+    url: "https://hooks.zapier.com/hooks/catch/23828444/u2kay84/",
+    data: zapierData, // form-encoded
+    success: function (response) {
+      console.log("✅ Zapier response:", response);
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.warn("⚠️ Zapier call failed:", textStatus, errorThrown);
+      console.log("🔍 Response text:", jqXHR.responseText);
+    },
+  });
 }
