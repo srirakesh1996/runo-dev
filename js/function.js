@@ -223,8 +223,11 @@ function submitForm(formId, formData, formToken) {
       $.ajax({
         type: "POST",
         url: "https://script.google.com/macros/s/AKfycbyATctMrbOAp_WIiW4vIrDh-XS-y-IWghYvBYwSnTOr7OAv1-89--ADP6HBWMne2GmkuQ/exec",
-        data: JSON.stringify(zapierData),
-        contentType: "application/json",
+        data: {
+          name: formData["your_name"] || "",
+          email: formData["your_email"] || "",
+          phone: formData["your_phone"] || "",
+        },
         success: function () {
           console.log("✅ Zapier data sent via Google Apps Script");
         },
