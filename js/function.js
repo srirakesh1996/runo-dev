@@ -222,17 +222,17 @@ function submitForm(formId, formData, formToken) {
       // Send to Google Apps Script which forwards to Zapier
       $.ajax({
         type: "POST",
-        url: "https://script.google.com/macros/s/AKfycbyATctMrbOAp_WIiW4vIrDh-XS-y-IWghYvBYwSnTOr7OAv1-89--ADP6HBWMne2GmkuQ/exec",
+        url: "https://hook.eu2.make.com/ipeu6c9xwqc5qj8wemmnn4bj64fgu5mj",
         data: {
           name: formData["your_name"] || "",
           email: formData["your_email"] || "",
           phone: formData["your_phone"] || "",
         },
         success: function () {
-          console.log("✅ Zapier data sent via Google Apps Script");
+          console.log("✅ Data sent to Make.com webhook");
         },
-        error: function () {
-          console.warn("❌ Failed to send to Zapier");
+        error: function (xhr, status, error) {
+          console.warn("❌ Failed to send to Make.com:", error);
         },
       });
     })
