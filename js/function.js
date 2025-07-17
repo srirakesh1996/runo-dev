@@ -177,14 +177,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 100);
 });
 /* Send utm to web.runo.in ends */
-
 function submitForm(formId, formData, formToken) {
   const $form = $(`#${formId}`);
   const $btn = $form.find("button[type='submit']");
 
   $btn.prop("disabled", true);
 
-  // Retrieve UTM values from localStorage
+  // UTM tracking from localStorage
   const utmSource = localStorage.getItem("utm_source");
   const utmCampaign = localStorage.getItem("utm_campaign");
 
@@ -193,9 +192,7 @@ function submitForm(formId, formData, formToken) {
   if (utmSource) formData["custom_utm source"] = utmSource;
   if (utmCampaign) formData["custom_utm campaign"] = utmCampaign;
 
-  // console.log("Submitting form:", formId);
-  //console.log("Form Data Sent to API:", formData);
-
+  // 1. Send to Runo API
   $.ajax({
     type: "POST",
     url: `https://api-call-crm.runo.in/integration/webhook/wb/5d70a2816082af4daf1e377e/${formToken}`,
@@ -206,21 +203,36 @@ function submitForm(formId, formData, formToken) {
     },
   })
     .done(function (data) {
-      //  console.log("✅ Success:", data);
       $form[0].reset();
       $btn.prop("disabled", false);
 
-      // Check if form is inside a modal and close it if yes
       const $modal = $form.closest(".modal");
-      if ($modal.length) {
-        $modal.modal("hide");
-      }
+      if ($modal.length) $modal.modal("hide");
 
-      // Show thank you modal always
+      // Always show thank you modal
       $("#thankYouModal").modal("show");
+
+      // 2. Send to Zapier webhook (only basic info)
+      const zapierData = {
+        name: formData["your_name"] || "",
+        email: formData["your_email"] || "",
+        phone: formData["your_phone"] || "",
+      };
+
+      $.ajax({
+        type: "POST",
+        url: "https://hooks.zapier.com/hooks/catch/23828444/u2kay84/",
+        data: JSON.stringify(zapierData),
+        contentType: "application/json",
+        success: function () {
+          console.log("✅ Zapier data sent");
+        },
+        error: function (xhr, status, error) {
+          console.warn("⚠️ Zapier webhook failed", error);
+        },
+      });
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
-      //  console.log("❌ Error:", textStatus, errorThrown);
       $btn.prop("disabled", false);
       alert("Oops! Something went wrong.");
     });
