@@ -212,23 +212,24 @@ function submitForm(formId, formData, formToken) {
       // Always show thank you modal
       $("#thankYouModal").modal("show");
 
-      // 2. Send to Zapier webhook (only basic info)
+      // Prepare Zapier data from formData
       const zapierData = {
         name: formData["your_name"] || "",
         email: formData["your_email"] || "",
         phone: formData["your_phone"] || "",
       };
 
+      // Send to Google Apps Script which forwards to Zapier
       $.ajax({
         type: "POST",
-        url: "https://hooks.zapier.com/hooks/catch/23828444/u2kay84/",
+        url: "https://script.google.com/macros/s/AKfycbyATctMrbOAp_WIiW4vIrDh-XS-y-IWghYvBYwSnTOr7OAv1-89--ADP6HBWMne2GmkuQ/exec",
         data: JSON.stringify(zapierData),
         contentType: "application/json",
         success: function () {
-          console.log("✅ Zapier data sent");
+          console.log("✅ Zapier data sent via Google Apps Script");
         },
-        error: function (xhr, status, error) {
-          console.warn("⚠️ Zapier webhook failed", error);
+        error: function () {
+          console.warn("❌ Failed to send to Zapier");
         },
       });
     })
