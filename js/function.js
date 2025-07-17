@@ -221,14 +221,14 @@ function submitForm(formId, formData, formToken) {
 
       $.ajax({
         type: "POST",
-        url: "https://script.google.com/macros/s/AKfycbyATctMrbOAp_WIiW4vIrDh-XS-y-IWghYvBYwSnTOr7OAv1-89--ADP6HBWMne2GmkuQ/exec", // your actual script URL
+        url: "https://script.google.com/macros/s/AKfycbyATctMrbOAp_WIiW4vIrDh-XS-y-IWghYvBYwSnTOr7OAv1-89--ADP6HBWMne2GmkuQ/exec",
         data: {
-          name: formData["your_name"],
-          email: formData["your_email"],
-          phone: formData["your_phone"],
+          name: formData["your_name"] || "",
+          email: formData["your_email"] || "",
+          phone: formData["your_phone"] || "",
         },
         success: function () {
-          console.log("✅ Sent to Zapier via Google Script");
+          console.log("✅ Sent to Google Script");
         },
         error: function () {
           console.warn("❌ Google Script failed");
