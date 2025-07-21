@@ -185,9 +185,9 @@ function submitForm(formId, formData, formToken) {
   $btn.prop("disabled", true);
 
   // Retrieve UTM values from localStorage
-  const utmSource = localStorage.getItem("utm_source");
+  /*const utmSource = localStorage.getItem("utm_source");
   const utmCampaign = localStorage.getItem("utm_campaign");
-  /* 
+
   formData["custom_source"] = "Website Enquiry- IB";
   formData["custom_status"] = "Api Allocation";
   if (utmSource) formData["custom_utm source"] = utmSource;
@@ -224,28 +224,21 @@ function submitForm(formId, formData, formToken) {
       $btn.prop("disabled", false);
       alert("Oops! Something went wrong.");
     });
-
+*/
   // --- Send only name, email, phone to Zapier email & whatsapp ---
 
-*/
-  // 🔹 3. Send to Zapier
-
-  const formattedPhone = (formData.phone || "").replace(/\D/g, "");
-
+  // 🔹 2. Prepare Zapier Data (field mapping)
   const zapierData = {
-    name: formData.name || "",
-    email: formData.email || "",
-    phone: formattedPhone,
+    name: formData["your_name"] || "",
+    email: formData["your_email"] || "",
+    phone: (formData.phone || "").replace(/\s+/g, ""),
   };
 
+  // 🔹 3. Send to Zapier
   $.ajax({
     type: "POST",
     url: "https://hooks.zapier.com/hooks/catch/23828444/u2kay84/",
-    data: JSON.stringify(zapierData),
-    contentType: "application/json",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    data: zapierData, // form-encoded
     success: function (response) {
       console.log("✅ Zapier response:", response);
     },
