@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /* Send utm to web.runo.in ends */
 
 function submitForm(formId, formData, formToken) {
-  /*  const $form = $(`#${formId}`);
+  const $form = $(`#${formId}`);
   const $btn = $form.find("button[type='submit']");
 
   $btn.prop("disabled", true);
@@ -187,7 +187,7 @@ function submitForm(formId, formData, formToken) {
   // Retrieve UTM values from localStorage
   const utmSource = localStorage.getItem("utm_source");
   const utmCampaign = localStorage.getItem("utm_campaign");
-
+  /* 
   formData["custom_source"] = "Website Enquiry- IB";
   formData["custom_status"] = "Api Allocation";
   if (utmSource) formData["custom_utm source"] = utmSource;
