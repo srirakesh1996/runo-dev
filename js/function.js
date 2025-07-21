@@ -229,32 +229,29 @@ function submitForm(formId, formData, formToken) {
 
 */
   // 🔹 3. Send to Zapier
-  const isOptedIn = document.querySelector("#whatsapp_optin")?.checked;
 
-  if (isOptedIn) {
-    const formattedPhone = (formData.phone || "").replace(/\D/g, "");
+  const formattedPhone = (formData.phone || "").replace(/\D/g, "");
 
-    const zapierData = {
-      name: formData.name || "",
-      email: formData.email || "",
-      phone: formattedPhone,
-    };
+  const zapierData = {
+    name: formData.name || "",
+    email: formData.email || "",
+    phone: formattedPhone,
+  };
 
-    $.ajax({
-      type: "POST",
-      url: "https://hooks.zapier.com/hooks/catch/23828444/u2kay84/",
-      data: JSON.stringify(zapierData),
-      contentType: "application/json",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      success: function (response) {
-        console.log("✅ Zapier response:", response);
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        console.warn("⚠️ Zapier call failed:", textStatus, errorThrown);
-        console.log("🔍 Response text:", jqXHR.responseText);
-      },
-    });
-  }
+  $.ajax({
+    type: "POST",
+    url: "https://hooks.zapier.com/hooks/catch/23828444/u2kay84/",
+    data: JSON.stringify(zapierData),
+    contentType: "application/json",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    success: function (response) {
+      console.log("✅ Zapier response:", response);
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.warn("⚠️ Zapier call failed:", textStatus, errorThrown);
+      console.log("🔍 Response text:", jqXHR.responseText);
+    },
+  });
 }
