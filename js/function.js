@@ -229,9 +229,9 @@ function submitForm(formId, formData, formToken) {
 
   // 🔹 2. Prepare Zapier Data (field mapping)
   const zapierData = {
-    name: formData["your_name"] || "",
-    email: formData["your_email"] || "",
-    phone: (formData.phone || "").replace(/\s+/g, ""),
+    name: formData.name || "",
+    email: formData.email || "",
+    phone: formData.phone || "",
   };
 
   // 🔹 3. Send to Zapier
