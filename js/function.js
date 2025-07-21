@@ -225,11 +225,12 @@ function submitForm(formId, formData, formToken) {
       alert("Oops! Something went wrong.");
     });
 
-  // 🔹 2. Prepare Zapier Data (field mapping)
+  // --- Send only name, email, phone to Zapier email & whatsapp ---
+  const formattedPhone = formData.phone.replace(/\D/g, ""); // remove non-digits
   const zapierData = {
-    name: formData["your_name"] || "",
-    email: formData["your_email"] || "",
-    phone: formData["your_phone"] || "",
+    name: formData.name || "",
+    email: formData.email || "",
+    phone: formattedPhone || "",
   };
 
   // 🔹 3. Send to Zapier
