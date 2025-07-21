@@ -198,7 +198,7 @@ function submitForm(formId, formData, formToken) {
 
   $.ajax({
     type: "POST",
-    url: `https://api-call-crm.runo.in/integration/webhook/wb/5d70a2816082af4daf1e377e/`,
+    url: `https://api-call-crm.runo.in/integration/webhook/wb/5d70a2816082af4daf1e377e/${formToken}`,
     data: JSON.stringify(formData),
     contentType: "application/json",
     headers: {
@@ -225,38 +225,25 @@ function submitForm(formId, formData, formToken) {
       alert("Oops! Something went wrong.");
     });
 
-  // ✅ Check if WhatsApp opt-in checkbox is checked
-  const isOptedIn = document.querySelector("#whatsapp_optin").checked;
+  // --- Send only name, email, phone to Zapier email & whatsapp ---
+  const formattedPhone = formData.phone.replace(/\D/g, ""); // remove non-digits
+  const zapierData = {
+    name: formData.name || "",
+    email: formData.email || "",
+    phone: formattedPhone || "",
+  };
 
-  if (isOptedIn) {
-    // ✅ Format phone (remove symbols, spaces)
-    const formattedPhone = formData["your_phone"].replace(/\D/g, "");
-
-    const zapierData = {
-      name: formData["your_name"] || "",
-      email: formData["your_email"] || "",
-      phone: formattedPhone || "",
-    };
-
-    console.log("📤 Sending WhatsApp to Zapier:", zapierData);
-
-    $.ajax({
-      type: "POST",
-      url: "https://hooks.zapier.com/hooks/catch/23828444/u2kay84/",
-      data: JSON.stringify(zapierData),
-      contentType: "application/json",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      success: function (response) {
-        console.log("✅ Zapier response:", response);
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        console.warn("⚠️ Zapier call failed:", textStatus, errorThrown);
-        console.log("🔍 Response text:", jqXHR.responseText);
-      },
-    });
-  } else {
-    console.log("⚠️ WhatsApp checkbox not checked, skipping Zapier send.");
-  }
+  // 🔹 3. Send to Zapier
+  $.ajax({
+    type: "POST",
+    url: "https://hooks.zapier.com/hooks/catch/23828444/u2kay84/",
+    data: zapierData, // form-encoded
+    success: function (response) {
+      console.log("✅ Zapier response:", response);
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.warn("⚠️ Zapier call failed:", textStatus, errorThrown);
+      console.log("🔍 Response text:", jqXHR.responseText);
+    },
+  });
 }
