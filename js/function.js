@@ -225,25 +225,38 @@ function submitForm(formId, formData, formToken) {
       alert("Oops! Something went wrong.");
     });
 
-  // --- Send only name, email, phone to Zapier email & whatsapp ---
-  const formattedPhone = formData.phone.replace(/\D/g, ""); // remove non-digits
-  const zapierData = {
-    name: formData.name || "",
-    email: formData.email || "",
-    phone: formattedPhone || "",
-  };
+  // ✅ Check if WhatsApp opt-in checkbox is checked
+  const isOptedIn = document.querySelector("#whatsapp_optin").checked;
 
-  // 🔹 3. Send to Zapier
-  $.ajax({
-    type: "POST",
-    url: "https://hooks.zapier.com/hooks/catch/23828444/u2kay84/",
-    data: zapierData, // form-encoded
-    success: function (response) {
-      console.log("✅ Zapier response:", response);
-    },
-    error: function (jqXHR, textStatus, errorThrown) {
-      console.warn("⚠️ Zapier call failed:", textStatus, errorThrown);
-      console.log("🔍 Response text:", jqXHR.responseText);
-    },
-  });
+  if (isOptedIn) {
+    // ✅ Format phone (remove symbols, spaces)
+    const formattedPhone = formData["your_phone"].replace(/\D/g, "");
+
+    const zapierData = {
+      name: formData["your_name"] || "",
+      email: formData["your_email"] || "",
+      phone: formattedPhone || "",
+    };
+
+    console.log("📤 Sending WhatsApp to Zapier:", zapierData);
+
+    $.ajax({
+      type: "POST",
+      url: "https://hooks.zapier.com/hooks/catch/23828444/u2kay84/",
+      data: JSON.stringify(zapierData),
+      contentType: "application/json",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      success: function (response) {
+        console.log("✅ Zapier response:", response);
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.warn("⚠️ Zapier call failed:", textStatus, errorThrown);
+        console.log("🔍 Response text:", jqXHR.responseText);
+      },
+    });
+  } else {
+    console.log("⚠️ WhatsApp checkbox not checked, skipping Zapier send.");
+  }
 }
