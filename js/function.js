@@ -229,15 +229,13 @@ function submitForm(formId, formData, formToken) {
   };
 */
 
-  const isOptedIn = document.querySelector("#whatsapp_optin").checked;
+  const formattedPhone = (formData.phone || "").replace(/\D/g, "");
 
   if (isOptedIn) {
-    const formattedPhone = formData.phone.replace(/\D/g, "");
-
     const zapierData = {
       name: formData.name || "",
       email: formData.email || "",
-      phone: formattedPhone || "",
+      phone: formattedPhone,
     };
 
     $.ajax({
