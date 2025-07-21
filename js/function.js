@@ -230,6 +230,7 @@ function submitForm(formId, formData, formToken) {
     name: formData["your_name"] || "",
     email: formData["your_email"] || "",
     phone: formData["your_phone"] || "",
+    opted_in: true, // ✅ WhatsApp opt-in
   };
 
   // 🔹 3. Send to Zapier
