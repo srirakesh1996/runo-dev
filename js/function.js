@@ -229,9 +229,10 @@ function submitForm(formId, formData, formToken) {
   };
 */
 
-  const formattedPhone = (formData.phone || "").replace(/\D/g, "");
+  const isOptedIn = document.querySelector("#whatsapp_optin")?.checked;
 
   if (isOptedIn) {
+    const formattedPhone = (formData.phone || "").replace(/\D/g, "");
     const zapierData = {
       name: formData.name || "",
       email: formData.email || "",
