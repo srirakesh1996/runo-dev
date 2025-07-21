@@ -223,15 +223,13 @@ function submitForm(formId, formData, formToken) {
       //  console.log("❌ Error:", textStatus, errorThrown);
       $btn.prop("disabled", false);
       alert("Oops! Something went wrong.");
-    });
-*/
-  // --- Send only name, email, phone to Zapier email & whatsapp ---
+    });*/
 
   // 🔹 2. Prepare Zapier Data (field mapping)
   const zapierData = {
-    name: formData.name || "",
-    email: formData.email || "",
-    phone: formData.phone || "",
+    name: formData["your_name"] || "",
+    email: formData["your_email"] || "",
+    phone: formData["your_phone"] || "",
   };
 
   // 🔹 3. Send to Zapier
