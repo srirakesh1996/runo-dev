@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /* Send utm to web.runo.in ends */
 
 function submitForm(formId, formData, formToken) {
-  const $form = $(`#${formId}`);
+  /*  const $form = $(`#${formId}`);
   const $btn = $form.find("button[type='submit']");
 
   $btn.prop("disabled", true);
@@ -232,7 +232,7 @@ function submitForm(formId, formData, formToken) {
     email: formData.email || "",
     phone: formattedPhone || "",
   };
-
+*/
   // 🔹 3. Send to Zapier
   $.ajax({
     type: "POST",
