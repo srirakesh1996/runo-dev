@@ -226,6 +226,7 @@ function submitForm(formId, formData, formToken) {
     });*/
 
   // 🔹 2. Prepare Zapier Data (field mapping)
+  // 🔹 1. Collect form data
   const zapierData = {
     name: formData["your_name"] || "",
     email: formData["your_email"] || "",
@@ -233,16 +234,34 @@ function submitForm(formId, formData, formToken) {
     opted_in: true, // ✅ WhatsApp opt-in
   };
 
-  // 🔹 3. Send to Zapier
+  // ✅ First: Send to Zapier for Email
   $.ajax({
     type: "POST",
-    url: "https://hooks.zapier.com/hooks/catch/23828444/u2kay84/",
+    url: "https://hooks.zapier.com/hooks/catch/23828444/u2kay84/", // Email Zap
     data: zapierData, // form-encoded
     success: function (response) {
-      console.log("✅ Zapier response:", response);
+      console.log("✅ Email Zapier response:", response);
     },
     error: function (jqXHR, textStatus, errorThrown) {
-      console.warn("⚠️ Zapier call failed:", textStatus, errorThrown);
+      console.warn("❌ Email Zapier failed:", textStatus, errorThrown);
+      console.log("🔍 Response text:", jqXHR.responseText);
+    },
+  });
+
+  // ✅ Second: Send to Zapier for WhatsApp (WATI)
+  $.ajax({
+    type: "POST",
+    url: "https://hooks.zapier.com/hooks/catch/23828444/u2jhlxv/", // Replace with your WhatsApp Zap webhook
+    data: {
+      name: zapierData.name,
+      phone: zapierData.phone,
+      opted_in: true,
+    },
+    success: function (response) {
+      console.log("✅ WhatsApp Zapier response:", response);
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.warn("❌ WhatsApp Zapier failed:", textStatus, errorThrown);
       console.log("🔍 Response text:", jqXHR.responseText);
     },
   });
