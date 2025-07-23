@@ -234,34 +234,16 @@ function submitForm(formId, formData, formToken) {
     opted_in: true, // ✅ WhatsApp opt-in
   };
 
-  // ✅ First: Send to Zapier for Email
+  // ✅ First: Send to Zapier for Email & WhatsApp
   $.ajax({
     type: "POST",
-    url: "https://hooks.zapier.com/hooks/catch/23828444/u2kay84/", // Email Zap
+    url: "https://hooks.zapier.com/hooks/catch/23828444/u2kay84/", //  Zap
     data: zapierData, // form-encoded
     success: function (response) {
-      console.log("✅ Email Zapier response:", response);
+      console.log("✅ Zapier response:", response);
     },
     error: function (jqXHR, textStatus, errorThrown) {
-      console.warn("❌ Email Zapier failed:", textStatus, errorThrown);
-      console.log("🔍 Response text:", jqXHR.responseText);
-    },
-  });
-
-  // ✅ Second: Send to Zapier for WhatsApp (WATI)
-  $.ajax({
-    type: "POST",
-    url: "https://hooks.zapier.com/hooks/catch/23828444/u2jhlxv/", // Replace with your WhatsApp Zap webhook
-    data: {
-      name: zapierData.name,
-      phone: zapierData.phone,
-      opted_in: true,
-    },
-    success: function (response) {
-      console.log("✅ WhatsApp Zapier response:", response);
-    },
-    error: function (jqXHR, textStatus, errorThrown) {
-      console.warn("❌ WhatsApp Zapier failed:", textStatus, errorThrown);
+      console.warn("❌ Zapier failed:", textStatus, errorThrown);
       console.log("🔍 Response text:", jqXHR.responseText);
     },
   });
