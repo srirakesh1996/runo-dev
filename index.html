@@ -84,14 +84,35 @@
          -->
       <!-- Inline Hero Banner Style -->
       <style>
-         .hero {
-         position: relative;
-         padding: 0;
-         overflow: hidden;
-         z-index: 1;
-         background: url('img/banner-img.webp') no-repeat center center;
-         background-size: cover;
-         }
+       .hero {
+  position: relative !important;
+  width: 100% !important;
+
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.hero-bg {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  z-index: 1 !important;
+}
+
+.hero .container {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.hero-content {
+  text-align: center !important;
+  color: white !important;
+}
+
       </style>
       <link rel="preload" as="image" href="img/banner-img.webp" type="image/webp" fetchpriority="high">
       <!-- Desktop -->
@@ -502,36 +523,46 @@
                 </div>
             </header>
              -->
-         <div class="hero">
-            <div class="container">
-               <!-- Header Start -->
-               <div class="row align-items-center">
-                  <div class="col-lg-12">
-                     <!-- Hero Content Start -->
-                     <div class="hero-content">
-                        <div class="banner-cont">
-                           <div class="section-title dark-section text-center wow fadeInUpCustom" data-wow-delay="0.3s"
-                              style="width: 100%">
-                              <h1 class="wow fadeInUpCustom" data-wow-delay="0.4s">
-                                 AI-Powered SIM-Based <br>Call Management CRM
-                              </h1>
-                              <p>2x Calling Productivity in Just 2 Weeks. Earn Trust on Every Call.
-                              </p>
-                           </div>
-                        </div>
-                        <!-- Hero Buttons -->
-                        <div class="hero-body wow fadeInUpCustom mt-50 mb-8" data-wow-delay="0.6s" data-wow-duration="1s">
-                           <div class="hero-btn">
-                              <a class="btn-plain track-btn" href="#" data-bs-toggle="modal" data-bs-target="#requestDemoModal"
-                                 data-label="Book a Demo - Home Banner">Book a Demo</a>
-                              <p class="banner-btn1">&nbsp;</p>
-                           </div>
-                           <div class="hero-btn">
-                              <a class="btn-default btn-highlighted track-btn runo-web-crm" href="https://web.runo.in"
-                                 data-label="Start 10-day free trial - Home Banner">Start 10-day free trial</a>
-                              <p style="font-size:13px">No Credit Card Required</p>
-                           </div>
-                        </div>
+  <section class="hero position-relative">
+  <!-- Background Image -->
+  <img
+    src="img/banner-img.webp"
+    alt="Runo CRM Hero"
+    class="hero-bg"
+    fetchpriority="high"
+    decoding="async"
+    loading="eager"
+  />
+
+  <!-- Overlay Content -->
+  <div class="container position-relative z-2">
+    <!-- Header Start -->
+    <div class="row align-items-center">
+      <div class="col-lg-12">
+        <!-- Hero Content Start -->
+        <div class="hero-content">
+          <div class="banner-cont">
+            <div class="section-title dark-section text-center wow fadeInUpCustom" data-wow-delay="0.3s" style="width: 100%">
+              <h1 class="wow fadeInUpCustom" data-wow-delay="0.4s">
+                AI-Powered SIM-Based <br>Call Management CRM
+              </h1>
+              <p>2x Calling Productivity in Just 2 Weeks. Earn Trust on Every Call.</p>
+            </div>
+          </div>
+          <!-- Hero Buttons -->
+          <div class="hero-body wow fadeInUpCustom mt-50 mb-8" data-wow-delay="0.6s" data-wow-duration="1s">
+            <div class="hero-btn">
+              <a class="btn-plain track-btn" href="#" data-bs-toggle="modal" data-bs-target="#requestDemoModal"
+                data-label="Book a Demo - Home Banner">Book a Demo</a>
+              <p class="banner-btn1">&nbsp;</p>
+            </div>
+            <div class="hero-btn">
+              <a class="btn-default btn-highlighted track-btn runo-web-crm" href="https://web.runo.in"
+                data-label="Start 10-day free trial - Home Banner">Start 10-day free trial</a>
+              <p style="font-size:13px">No Credit Card Required</p>
+            </div>
+          </div>
+       
                         <div class="row align-items-end wow zoomIn" id="web-hero">
                            <!-- Features -->
                            <div class="col-lg-4 order-1 order-lg-2 custom-shadow-box" data-wow-delay="0.3s"
