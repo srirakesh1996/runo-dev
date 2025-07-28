@@ -160,7 +160,6 @@
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 20px;
-}*/
 .runo-logo img {
   width: 120px;
   animation: zoomInOut 1.5s ease-in-out infinite alternate;
@@ -183,6 +182,7 @@
     transform: rotate(360deg);
   }
 }
+}*/
 
 /* preloader ends */
 
