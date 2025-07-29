@@ -182,19 +182,25 @@ function submitForm(formId, formData, formToken) {
   const $form = $(`#${formId}`);
   const $btn = $form.find("button[type='submit']");
 
-  $btn.prop("disabled", true);
+  const $spinner = $btn.find(".spinner-border");
+  const $btnText = $btn.find(".btn-text");
+  const defaultText = $btnText.text(); // Store original text once
 
-  // Retrieve UTM values from localStorage
-  /*const utmSource = localStorage.getItem("utm_source");
+  $(".text-danger").addClass("d-none");
+
+  // ✅ Disable button and show spinner while submitting
+  $btn.prop("disabled", true);
+  $spinner.removeClass("d-none");
+  $btnText.text("Submitting...");
+
+  // Retrieve UTM values
+  const utmSource = localStorage.getItem("utm_source");
   const utmCampaign = localStorage.getItem("utm_campaign");
 
   formData["custom_source"] = "Website Enquiry- IB";
   formData["custom_status"] = "Api Allocation";
   if (utmSource) formData["custom_utm source"] = utmSource;
   if (utmCampaign) formData["custom_utm campaign"] = utmCampaign;
-
-  // console.log("Submitting form:", formId);
-  //console.log("Form Data Sent to API:", formData);
 
   $.ajax({
     type: "POST",
@@ -206,24 +212,24 @@ function submitForm(formId, formData, formToken) {
     },
   })
     .done(function (data) {
-      //  console.log("✅ Success:", data);
       $form[0].reset();
-      $btn.prop("disabled", false);
 
-      // Check if form is inside a modal and close it if yes
       const $modal = $form.closest(".modal");
       if ($modal.length) {
         $modal.modal("hide");
       }
 
-      // Show thank you modal always
       $("#thankYouModal").modal("show");
     })
-    .fail(function (jqXHR, textStatus, errorThrown) {
-      //  console.log("❌ Error:", textStatus, errorThrown);
-      $btn.prop("disabled", false);
+    .fail(function () {
       alert("Oops! Something went wrong.");
-    });*/
+    })
+    .always(function () {
+      // ✅ Re-enable and reset button after response (success or fail)
+      $btn.prop("disabled", false);
+      $spinner.addClass("d-none");
+      $btnText.text(defaultText);
+    });
 
   // 🔹 2. Prepare Zapier Data (field mapping)
   // 🔹 1. Collect form data

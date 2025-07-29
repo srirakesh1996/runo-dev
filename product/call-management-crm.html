@@ -64,8 +64,45 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/css/intlTelInput.min.css" />
       <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/intlTelInput.min.js"></script>
       <!-- Google Tag Manager -->
- 
+      <script>(function (w, d, s, l, i) {
+         w[l] = w[l] || []; w[l].push({
+             'gtm.start':
+                 new Date().getTime(), event: 'gtm.js'
+         }); var f = d.getElementsByTagName(s)[0],
+             j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+         })(window, document, 'script', 'dataLayer', 'GTM-M7SSPG7W');
+      </script>
       <!-- End Google Tag Manager -->
+      <script type="application/ld+json">
+         {
+           "@context": "https://schema.org/",
+           "@type": "Product",
+           "name": "Call Management CRM App",
+           "image": [
+             "https://runo.ai/img/call-management/call-management.webp"
+           ],
+           "description": "AI-powered SIM-based Call Management CRM app to track, call, and manage leads. It streamlines sales calls, lead follow-ups, and CRM updates all from your mobile phone.",
+           "brand": {
+             "@type": "Brand",
+             "name": "Runo"
+           },
+           "url": "https://runo.ai/product/call-management-crm",
+           "offers": {
+             "@type": "Offer",
+             "url": "https://runo.ai/pricing",
+             "priceCurrency": "INR",
+             "price": "599",
+             "itemCondition": "https://schema.org/NewCondition",
+             "availability": "https://schema.org/InStock"
+           },
+           "aggregateRating": {
+             "@type": "AggregateRating",
+             "ratingValue": "4.7",
+             "reviewCount": "1882"
+           }
+         }
+      </script>
       <script type="application/ld+json">
          {
            "@context": "https://schema.org",
@@ -171,7 +208,16 @@
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7SSPG7W" height="0" width="0"
          style="display:none;visibility:hidden"></iframe></noscript>
       <!-- End Google Tag Manager (noscript) -->
-     
+      <!-- Preloader Start -->
+      <div class="runo-preloader">
+         <div class="runo-preloader-inner">
+            <div class="runo-spinner"></div>
+            <div class="runo-logo">
+               <img src="../img/logo.png" alt="Runo Loading">
+            </div>
+         </div>
+      </div>
+      <!-- Preloader End -->
       <!-- Modal -->
       <div class="modal fade" id="requestDemoModal" tabindex="-1" aria-hidden="true" style="overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none;">
          <div class="modal-dialog modal-dialog-centered">
@@ -491,6 +537,8 @@
                                  <li class="nav-item"><a class="nav-link" href="telecaller-app">Telecaller
                                     App</a>
                                  </li>
+                                  <li class="nav-item"><a class="nav-link" href="sales-management-software">Sales Management Software</a></li>
+                      <li class="nav-item"><a class="nav-link" href="sales-call-tracking-software">Sales Call Tracking Software</a></li>
                               </ul>
                            </li>
                            <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
@@ -1528,6 +1576,13 @@
                      <li><a href="telecaller-app" class="text-light text-decoration-none d-block mb-1">Telecaller
                         App</a>
                      </li>
+                       <li><a href="sales-management-software" class="text-light text-decoration-none d-block mb-1">Sales Management Software
+                     </a>
+                     </li>
+
+                        <li><a href="sales-call-tracking-software" class="text-light text-decoration-none d-block mb-1">Sales Call Tracking Software
+                     </a>
+                     </li>
                   </ul>
                </div>
                <!-- Support -->
@@ -1661,7 +1716,7 @@
              if (preloader) {
                  preloader.style.opacity = '0';
                  preloader.style.transition = 'opacity 0.5s ease';
-                 setTimeout(() => (preloader.style.display = 'none'), 400);
+                 setTimeout(() => (preloader.style.display = 'none'), 350);
              }
          });
          
