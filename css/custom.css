@@ -7,10 +7,7 @@
   --secondary-color: #f1ffee;
   --text-color: #ffffff;
   --accent-color: #252525;
-  --accent-secondary-color: linear-gradient(93.43deg,
-      #ff5730 -4.63%,
-      #5e33ec 65.52%,
-      #0065f2 106.84%);
+  --accent-secondary-color: linear-gradient(93.43deg, #ff5730 -4.63%, #5e33ec 65.52%, #0065f2 106.84%);
 
   --white-color: #ffffff;
   --divider-color: #3b545024;
@@ -169,7 +166,7 @@ body {
   margin-left: -15px;
 }
 
-.row>* {
+.row > * {
   padding-right: 15px;
   padding-left: 15px;
 }
@@ -179,7 +176,7 @@ body {
   margin-left: 0px;
 }
 
-.row.no-gutters>* {
+.row.no-gutters > * {
   padding-right: 0px;
   padding-left: 0px;
 }
@@ -285,9 +282,6 @@ body {
   position: relative;
 }
 
-
-
-
 .btn-plain:hover {
   background: #f44336;
   color: #ffffff;
@@ -311,10 +305,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(93.43deg,
-      #ff5730 -4.63%,
-      #5e33ec 65.52%,
-      #0065f2 106.84%);
+  background: linear-gradient(93.43deg, #ff5730 -4.63%, #5e33ec 65.52%, #0065f2 106.84%);
   filter: blur(10px);
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -323,8 +314,7 @@ body {
 }
 
 .btn-default.btn-highlighted:hover {
-  transform: scale(1.0);
-
+  transform: scale(1);
 }
 
 .btn-default.btn-highlighted:hover::before {
@@ -619,7 +609,7 @@ header.main-header .header-sticky.active {
   margin: 0 20px;
 }
 
-.main-menu .nav-menu-wrapper>ul {
+.main-menu .nav-menu-wrapper > ul {
   align-items: center;
   display: inline-flex;
 }
@@ -676,7 +666,7 @@ header.main-header .header-sticky.active {
   color: #f44336 !important;
 }
 
-.main-menu ul li.submenu>a:after {
+.main-menu ul li.submenu > a:after {
   content: "\f107";
   font-family: "FontAwesome";
   font-weight: 900;
@@ -691,8 +681,6 @@ header.main-header .header-sticky.active {
 
 .header-sticky.active .main-menu ul li a:hover {
   color: #f44336;
-
-
 }
 
 .main-menu ul ul {
@@ -703,7 +691,7 @@ header.main-header .header-sticky.active {
   padding: 0;
   margin: 0;
   list-style: none;
-  width: 235px;
+  width: auto;
   border-radius: 20px;
   position: absolute;
   left: -30px;
@@ -723,14 +711,14 @@ header.main-header .header-sticky.active {
   text-align: left;
 }
 
-.main-menu ul li:hover>ul {
+.main-menu ul li:hover > ul {
   visibility: visible;
   opacity: 1;
   /* transform: scaleY(1);
   padding: 5px 0;*/
 }
 
-.main-menu ul li.submenu ul li.submenu>a:after {
+.main-menu ul li.submenu ul li.submenu > a:after {
   content: "\f105";
   float: right;
 }
@@ -746,7 +734,7 @@ header.main-header .header-sticky.active {
   /* transition: all 0.3s ease-in-out;*/
 }
 
-.main-menu ul li:hover>ul {
+.main-menu ul li:hover > ul {
   visibility: visible;
   opacity: 1;
   /*transform: scaleY(1);*/
@@ -884,7 +872,7 @@ header.main-header .header-sticky.active {
   transition: all 0.3s ease-out;
 }
 
-.slicknav_open>a .slicknav_arrow:after {
+.slicknav_open > a .slicknav_arrow:after {
   transform: translateY(-52%) rotate(-180deg);
   color: var(--primary-color);
 }
@@ -1437,8 +1425,7 @@ background-size: cover;
 
 .our-clients {
   padding: 100px 0;
-  background: url("../images/our-clients-bg.png") no-repeat,
-    var(--primary-color);
+  background: url("../images/our-clients-bg.png") no-repeat, var(--primary-color);
   background-position: center center;
   background-size: contain;
 }
@@ -2195,7 +2182,6 @@ background-size: cover;
   }
 }
 
-
 .testimonial-slider {
   position: relative;
   margin-top: 50px;
@@ -2220,11 +2206,8 @@ background-size: cover;
 @media (min-width: 990px) and (max-width: 1150px) {
   .testimonial-item {
     height: 290px;
-
   }
 }
-
-
 
 .testimonial-header {
   margin-bottom: 20px;
@@ -2279,8 +2262,6 @@ background-size: cover;
   font-size: 13px !important;
   margin: 0;
 }
-
-
 
 .testimonial-footer h2 {
   color: var(--white-color);
@@ -2608,7 +2589,6 @@ background-size: cover;
 }
 
 .footer-copyright p {
-
   color: #fff !important;
 }
 
@@ -2705,7 +2685,7 @@ background-size: cover;
   color: inherit;
 }
 
-.page-header-box ol .breadcrumb-item+.breadcrumb-item::before {
+.page-header-box ol .breadcrumb-item + .breadcrumb-item::before {
   color: var(--secondary-color);
 }
 
@@ -4225,7 +4205,6 @@ background-size: cover;
   font-size: 16px;
   font-weight: 400;
 
-
   padding: 16px 20px;
   border: 1px solid var(--divider-color);
   border-radius: 0;
@@ -4539,14 +4518,11 @@ background-size: cover;
 /***      31. Responsive css      ***/
 /************************************/
 
-
 @media only screen and (max-width: 800px) {
-
   .testimonial-item {
     height: 270px !important;
     padding: 30px;
   }
-
 }
 
 @media only screen and (max-width: 991px) {
