@@ -1034,6 +1034,7 @@
   background: url("../img/cloud-back.webp") no-repeat center center;
   background-size: cover;
   padding: 50px 0px;
+  margin-bottom: 20px;
 }
 
 .cloud-tech-section h2 {
@@ -3306,6 +3307,9 @@ body.modal-open {
 }
 
 @media only screen and (max-width: 600px) {
+  .sales-execution-section {
+    background: linear-gradient(307deg, rgba(255, 255, 255, 0) 0%, #f5f3ed 35%, #f5f3ed 100%);
+  }
   #ban {
     background-image: url("../img/waba-mbg.webp"); /* or .png / .jpg */
     background-repeat: no-repeat;
