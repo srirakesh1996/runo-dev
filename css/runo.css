@@ -3259,7 +3259,6 @@ body.modal-open {
 }
 
 .sales-execution-section .section-title h2 {
-  font-size: 30px !important;
   padding: 0px;
   line-height: 1.4;
 }
@@ -3305,6 +3304,10 @@ body.modal-open {
   height: auto;
 }
 
+.waba-btn {
+  padding: 12px 0px;
+}
+
 @media only screen and (max-width: 600px) {
   .sales-execution-section {
     background: #fff;
@@ -3343,7 +3346,8 @@ body.modal-open {
     line-height: 1.5;
     margin-bottom: 10px;
   }
-}
-.waba-btn {
-  padding: 12px 0px;
+  .waba-btn {
+    display: flex;
+    justify-content: center;
+  }
 }
