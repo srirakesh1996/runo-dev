@@ -3255,7 +3255,7 @@ body.modal-open {
   cursor: default;
 }
 .sales-execution-section {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #f5f3ed 35%, #f5f3ed 100%);
+  background: #fff;
 }
 
 .sales-execution-section .section-title h2 {
@@ -3264,10 +3264,7 @@ body.modal-open {
   line-height: 1.4;
 }
 #ban {
-  background-image: url("../img/waba-wbg.webp"); /* or .png / .jpg */
-  background-repeat: no-repeat;
-  background-position: right center;
-  background-size: contain;
+  background: #f5f3ed;
   position: relative;
   border-radius: 30px;
   padding: 30px;
@@ -3308,13 +3305,10 @@ body.modal-open {
 
 @media only screen and (max-width: 600px) {
   .sales-execution-section {
-    background: linear-gradient(307deg, rgba(255, 255, 255, 0) 0%, #f5f3ed 35%, #f5f3ed 100%);
+    background: #fff;
   }
   #ban {
-    background-image: url("../img/waba-mbg.webp"); /* or .png / .jpg */
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: cover;
+    background: #f5f3ed;
     position: relative;
     border-radius: 30px;
     padding: 5px;
