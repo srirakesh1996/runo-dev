@@ -3321,6 +3321,11 @@ body.modal-open {
     max-width: 100%;
     height: auto;
   }
+
+  .section-heading {
+    font-size: 32px;
+  }
+
   .sales-text-content {
     padding: 15px 0px;
   }
@@ -3328,9 +3333,15 @@ body.modal-open {
     margin-bottom: 20px;
   }
   .sales-execution-section .section-title h2 {
-    font-size: 22px !important;
+    font-size: 26px !important;
     padding: 0px;
     line-height: 1.4;
+  }
+  .section-subheading {
+    font-weight: 700;
+    font-size: 22px !important;
+    line-height: 1.5;
+    margin-bottom: 10px;
   }
 }
 .waba-btn {
