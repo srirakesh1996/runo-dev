@@ -3276,8 +3276,10 @@ body.modal-open {
 }
 
 .section-subheading {
-  font-weight: 600;
-  font-size: 18px;
+  font-weight: 700;
+  font-size: 25px !important;
+  line-height: 1.5;
+  margin-bottom: 10px;
 }
 
 .sales-features-list {
@@ -3299,7 +3301,7 @@ body.modal-open {
 
 .sales-flow-image {
   z-index: 3;
-  max-width: 90%;
+  max-width: 80%;
   height: auto;
 }
 
@@ -3320,7 +3322,7 @@ body.modal-open {
     height: auto;
   }
   .sales-text-content {
-    padding: 20px 0px;
+    padding: 15px 0px;
   }
   .sales-image-wrapper {
     margin-bottom: 20px;
@@ -3330,4 +3332,7 @@ body.modal-open {
     padding: 0px;
     line-height: 1.4;
   }
+}
+.waba-btn {
+  padding: 12px 0px;
 }
