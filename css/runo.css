@@ -3184,7 +3184,7 @@ body.modal-open {
 /* hide for now*/
 
 .addon-card .price-tag {
-  display: none !important;
+  display: inline-block !important;
 }
 
 .icon-hover-message {
