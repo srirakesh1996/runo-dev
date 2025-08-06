@@ -389,7 +389,7 @@
             }, {});
 
           formData["your_phone"] = iti.getNumber(); // international format
-          formData["custom_Page Name"] = window.location.pathname.replace(/^\/|\/$/g, "") || "Landing Pages";
+          formData["custom_Page Name"] = window.location.pathname.replace(/^\/|\/$/g, "") || "Blog Pages";
 
           const uuid = $(this).data("uuid");
 
@@ -502,6 +502,7 @@
         /* Limit to two lines and truncate if needed */
         display: -webkit-box;
         -webkit-line-clamp: 3; /* Truncate after 2 lines */
+        line-clamp: 3;
         -webkit-box-orient: vertical; /* Stack the lines vertically */
         overflow: hidden; /* Hide excess text */
         text-overflow: ellipsis; /* Show "..." when truncated */
