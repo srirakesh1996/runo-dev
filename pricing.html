@@ -744,6 +744,24 @@
          width: 200px;
          }
          }
+         /*2 nd car*/
+         .price-tag{
+         color:#000
+         }
+         .wa-plan-price1{
+         color:#000;
+         }
+         .form-select {
+         color:#000 !important;
+         }
+         #wa-plan-selector1{
+         width: 150px;
+         }
+         @media only screen and (max-width: 600px) {
+         #wa-plan-selector1 {
+         width: 200px;
+         }
+         }
       </style>
       <section class="addon-section">
          <div class="container">
@@ -796,6 +814,101 @@
                     const selectedPlan = waPlanSelector.value;
                     waPlanTitle.textContent = waPlans[selectedPlan].title;
                     waPlanPrice.textContent = waPlans[selectedPlan].price;
+                  });
+               </script>
+               <div class="col-md-6 col-lg-6">
+                  <div class="addon-card gradient-purple">
+                     <h5>WhatsApp Business</h5>
+                     <p>Send bulk WhatsApp messages directly from Runo, track delivery and
+                        replies, and manage all conversations.
+                     </p>
+                     <!-- Price Display with Dropdown -->
+                     <div class="d-flex align-items-center justify-content-between flex-wrap">
+                        <span class="price-tag">
+                        <span id="wa-plan-price1">₹149</span>/user/month + GST
+                        </span>
+                        <select id="wa-plan-selector1" class="form-select mt-2 mt-md-0">
+                           <option value="yearly" selected>Yearly Plan</option>
+                           <option value="half-yearly">Half-Yearly Plan</option>
+                           <option value="quarterly">Quarterly Plan</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <script>
+                  const waPlanSelector1 = document.getElementById('wa-plan-selector1');
+                  
+                  const waPlanPrice1 = document.getElementById('wa-plan-price1');
+                  
+                  const waPlans1 = {
+                    'yearly': {
+                      title: 'Yearly Plan:',
+                      price: '₹149'
+                    },
+                    'half-yearly': {
+                      title: 'Half-Yearly Plan:',
+                      price: '₹199'
+                    },
+                    'quarterly': {
+                      title: 'Quarterly Plan:',
+                      price: '₹249'
+                    }
+                  };
+                  
+                  waPlanSelector1.addEventListener('change', function () {
+                    const selectedPlan1 = waPlanSelector1.value;
+                  
+                    waPlanPrice1.textContent = waPlans1[selectedPlan1].price;
+                  });
+               </script>
+               <div class="col-md-6 col-lg-6">
+                  <div class="addon-card gradient-purple">
+                     <h5>WhatsApp Business</h5>
+                     <p>
+                        Send bulk WhatsApp messages directly from Runo, track delivery and
+                        replies, and manage all conversations.
+                     </p>
+                     <!-- price-tag as a custom dropdown -->
+                     <div class="dropdown">
+                        <button
+                           class="price-tag dropdown-toggle btn btn-light text-dark"
+                           type="button"
+                           id="wa-price-tag"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false"
+                           >
+                        <strong>Yearly Plan</strong>: ₹149/user/month + GST
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="wa-price-tag">
+                           <li>
+                              <a class="dropdown-item" href="#" data-value="yearly">
+                              <strong> Yearly Plan:</strong> ₹149/user/month + GST
+                              </a>
+                           </li>
+                           <li>
+                              <a class="dropdown-item" href="#" data-value="half-yearly">
+                              <strong> Half-Yearly Plan:</strong>  ₹199/user/month + GST
+                              </a>
+                           </li>
+                           <li>
+                              <a class="dropdown-item" href="#" data-value="quarterly">
+                              <strong>  Quarterly Plan</strong>: ₹249/user/month + GST
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <script>
+                  const priceTagBtn = document.getElementById('wa-price-tag');
+                  const priceOptions = document.querySelectorAll('.dropdown-menu .dropdown-item');
+                  
+                  priceOptions.forEach(option => {
+                    option.addEventListener('click', function (e) {
+                      e.preventDefault();
+                      const selectedText = this.textContent;
+                      priceTagBtn.textContent = selectedText;
+                    });
                   });
                </script>
                <div class="col-md-6 col-lg-6">
