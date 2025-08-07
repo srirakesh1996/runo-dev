@@ -861,56 +861,61 @@
                     waPlanPrice1.textContent = waPlans1[selectedPlan1].price;
                   });
                </script>
-               <div class="col-md-6 col-lg-6">
-                  <div class="addon-card gradient-purple">
-                     <h5>WhatsApp Business</h5>
-                     <p>
-                        Send bulk WhatsApp messages directly from Runo, track delivery and
-                        replies, and manage all conversations.
-                     </p>
-                     <!-- price-tag as a custom dropdown -->
-                     <div class="dropdown">
-                        <button
-                           class="price-tag dropdown-toggle btn btn-light text-dark"
-                           type="button"
-                           id="wa-price-tag"
-                           data-bs-toggle="dropdown"
-                           aria-expanded="false"
-                           >
-                        <strong>Yearly Plan</strong>: ₹149/user/month + GST
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="wa-price-tag">
-                           <li>
-                              <a class="dropdown-item" href="#" data-value="yearly">
-                              <strong> Yearly Plan:</strong> ₹149/user/month + GST
-                              </a>
-                           </li>
-                           <li>
-                              <a class="dropdown-item" href="#" data-value="half-yearly">
-                              <strong> Half-Yearly Plan:</strong>  ₹199/user/month + GST
-                              </a>
-                           </li>
-                           <li>
-                              <a class="dropdown-item" href="#" data-value="quarterly">
-                              <strong>  Quarterly Plan</strong>: ₹249/user/month + GST
-                              </a>
-                           </li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <script>
-                  const priceTagBtn = document.getElementById('wa-price-tag');
-                  const priceOptions = document.querySelectorAll('.dropdown-menu .dropdown-item');
-                  
-                  priceOptions.forEach(option => {
-                    option.addEventListener('click', function (e) {
-                      e.preventDefault();
-                      const selectedText = this.textContent;
-                      priceTagBtn.textContent = selectedText;
-                    });
-                  });
-               </script>
+          <div class="col-md-6 col-lg-6">
+  <div class="addon-card gradient-purple">
+    <h5>WhatsApp Business</h5>
+    <p>
+      Send bulk WhatsApp messages directly from Runo, track delivery and
+      replies, and manage all conversations.
+    </p>
+
+    <!-- price-tag as a custom dropdown -->
+    <div class="dropdown">
+      <button
+        class="price-tag dropdown-toggle btn btn-light text-dark"
+        type="button"
+        id="wa-price-tag"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <span id="price-text">
+          <strong>Yearly Plan</strong>: ₹149/user/month + GST
+        </span>
+      </button>
+
+      <ul class="dropdown-menu" aria-labelledby="wa-price-tag">
+        <li>
+          <a class="dropdown-item" href="#" data-value="yearly">
+            <strong>Yearly Plan</strong>: ₹149/user/month + GST
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#" data-value="half-yearly">
+            <strong>Half-Yearly Plan</strong>: ₹199/user/month + GST
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#" data-value="quarterly">
+            <strong>Quarterly Plan</strong>: ₹249/user/month + GST
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  const priceText = document.getElementById('price-text');
+  const priceOptions = document.querySelectorAll('.dropdown-menu .dropdown-item');
+
+  priceOptions.forEach(option => {
+    option.addEventListener('click', function (e) {
+      e.preventDefault();
+      priceText.innerHTML = this.innerHTML;
+    });
+  });
+</script>
+
                <div class="col-md-6 col-lg-6">
                   <div class="addon-card gradient-green">
                      <h5>AI Call Intelligence</h5>
