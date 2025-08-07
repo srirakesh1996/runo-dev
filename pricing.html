@@ -165,10 +165,10 @@
                               <a href="privacy-policy" target="_blank">privacy policy</a>
                               .
                            </p>
-                             <button type="submit" id="demo-form-btn" class="btn-default btn-highlighted" style="width: 100%;">
-  <span class="btn-text">Submit</span>
-  <span class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
-</button>
+                           <button type="submit" id="demo-form-btn" class="btn-default btn-highlighted" style="width: 100%;">
+                           <span class="btn-text">Submit</span>
+                           <span class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
+                           </button>
                         </form>
                      </div>
                   </div>
@@ -723,6 +723,28 @@
              },
          });
       </script>
+      <style>
+         .price-tag{
+         color:#000
+         }
+         .wa-plan-title{
+         color:#000;
+         }
+         .wa-plan-price{
+         color:#000;
+         }
+         .form-select {
+         color:#000 !important;
+         }
+         #wa-plan-selector{
+         width: 150px;
+         }
+         @media only screen and (max-width: 600px) {
+         #wa-plan-selector {
+         width: 200px;
+         }
+         }
+      </style>
       <section class="addon-section">
          <div class="container">
             <div class="row g-4">
@@ -734,12 +756,48 @@
                   <div class="addon-card gradient-purple">
                      <h5>WhatsApp Business</h5>
                      <p>Send bulk WhatsApp messages directly from Runo, track delivery and
-                        replies, and manage all
-                        conversations.
+                        replies, and manage all conversations.
                      </p>
-                     <span class="price-tag">₹ xxx/user/month</span>
+                     <!-- Price Display with Dropdown -->
+                     <div class="d-flex align-items-center justify-content-between flex-wrap">
+                        <span class="price-tag">
+                        <strong id="wa-plan-title">Yearly Plan:</strong>
+                        <span id="wa-plan-price">₹149</span>/user/month
+                        </span>
+                        <select id="wa-plan-selector" class="form-select mt-2 mt-md-0">
+                           <option value="yearly" selected>Yearly Plan</option>
+                           <option value="half-yearly">Half-Yearly Plan</option>
+                           <option value="quarterly">Quarterly Plan</option>
+                        </select>
+                     </div>
                   </div>
                </div>
+               <script>
+                  const waPlanSelector = document.getElementById('wa-plan-selector');
+                  const waPlanTitle = document.getElementById('wa-plan-title');
+                  const waPlanPrice = document.getElementById('wa-plan-price');
+                  
+                  const waPlans = {
+                    'yearly': {
+                      title: 'Yearly Plan:',
+                      price: '₹149'
+                    },
+                    'half-yearly': {
+                      title: 'Half-Yearly Plan:',
+                      price: '₹199'
+                    },
+                    'quarterly': {
+                      title: 'Quarterly Plan:',
+                      price: '₹249'
+                    }
+                  };
+                  
+                  waPlanSelector.addEventListener('change', function () {
+                    const selectedPlan = waPlanSelector.value;
+                    waPlanTitle.textContent = waPlans[selectedPlan].title;
+                    waPlanPrice.textContent = waPlans[selectedPlan].price;
+                  });
+               </script>
                <div class="col-md-6 col-lg-6">
                   <div class="addon-card gradient-green">
                      <h5>AI Call Intelligence</h5>
@@ -747,7 +805,7 @@
                         call quality scores
                         to coach reps and improve every conversation.
                      </p>
-                     <span class="price-tag">₹ xxx/user/month</span>
+                     <!-- <span class="price-tag">₹ xxx/user/month</span>--> 
                   </div>
                </div>
                <div class="col-md-6 col-lg-6">
@@ -757,7 +815,7 @@
                         tasks like booking
                         calls or setting follow-ups
                      </p>
-                     <span class="price-tag">₹ xxx/user/month</span>
+                     <!-- <span class="price-tag">₹ xxx/user/month</span>--> 
                   </div>
                </div>
                <div class="col-md-6 col-lg-6">
@@ -766,7 +824,7 @@
                      <p>Get help with setup, CRM customisation, and training to get your team up
                         and running smoothly
                      </p>
-                     <span class="price-tag">₹ xxx/user/month</span>
+                     <!-- <span class="price-tag">₹ xxx/user/month</span>--> 
                   </div>
                </div>
                <div class="col-md-6 col-lg-6">
@@ -776,7 +834,7 @@
                         lead data without
                         interruptions.
                      </p>
-                     <span class="price-tag">₹ xxx/user/month</span>
+                     <!-- <span class="price-tag">₹ xxx/user/month</span>--> 
                   </div>
                </div>
             </div>
